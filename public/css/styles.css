@@ -4,3 +4,168 @@
 *:after {
   box-sizing: border-box;
 }
+
+body {
+  background-image: url("../images/site/small_check.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#wrapper {
+  margin: 0 2rem;
+  padding: 1rem;
+  background-color: white;
+  border: solid;
+  border-radius: 1rem;
+  border-color: #0b5ed7;
+}
+
+/******* Header ***************/
+#top-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.siteName {
+ font-size: x-large;
+ font-weight: 600;
+}
+/******* navigation ***************/
+nav{
+  background-color: black;
+  color: aliceblue;
+  padding: 0 3rem;
+}
+.nav_list{
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  list-style-type: none
+}
+
+/* ===============================
+   WELCOME HERO (igual en mobile y web)
+================================= */
+
+.welcome-hero {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.welcome-msg {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  max-width: 300px;
+}
+
+.welcome-msg h3 {
+  margin-top: 0;
+}
+
+.welcome-msg button {
+  background-color: #0b5ed7;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.welcome-hero img {
+  width: 250px;
+  height: auto;
+}
+
+/* ===============================
+   REVIEW & UPGRADES (mobile default)
+================================= */
+
+.review-box,
+.upgrades-box {
+  margin: 1.5rem 0;
+}
+
+/* ===============================
+   WEB VIEW (768px and up)
+================================= */
+
+@media screen and (min-width: 768px) {
+
+  .review-upgrades-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .review-box,
+  .upgrades-box {
+    flex: 1;
+  }
+
+  .welcome-msg h3, .welcome-msg p, .welcome-msg button{
+    font-size: x-large;
+  }
+  
+  .welcome-hero img {
+    width: 500px;
+  }
+
+  #wrapper {
+  margin: 1rem 4rem;
+  }
+
+}
+
+
+.upgrades-card {
+    display: flex;
+    gap: 1rem;
+    padding: .8rem 0;
+}
+
+.card-upgrades {
+    text-align: center;
+    justify-content: center;
+}
+
+.card-upgrades a p{
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.card-img {
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(225, 230, 228);
+    padding: .5rem 3rem;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: black;
+}
+
+.upgrades-card img {
+    width: 75px;
+    height: 80px;
+}
+
+/* 
+welcome hero */
+
+.welcome-msg {
+    background-color: #b4c3dac8;
+    padding: .2rem .5rem;
+}
+
+.welcome-msg h3, .welcome-msg p{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.welcome-msg button {
+    justify-content: center;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+}

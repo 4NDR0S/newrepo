@@ -1,0 +1,90 @@
+<h1><%= title %></h1>
+
+<div class="inventory-container">
+
+  <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <form method="post" action="/inv/add-inventory" class="inventory-form">
+
+    <label>Classification</label>
+    <%- classificationSelect %>
+
+    <label>Make</label>
+    <input
+      type="text"
+      name="inv_make"
+      required
+      value="<%= locals.inv_make || '' %>"
+    >
+
+    <label>Model</label>
+    <input
+      type="text"
+      name="inv_model"
+      required
+      value="<%= locals.inv_model || '' %>"
+    >
+
+    <label>Description</label>
+    <textarea
+      name="inv_description"
+      required
+    ><%= locals.inv_description || '' %></textarea>
+
+    <label>Image Path</label>
+    <input
+      type="text"
+      name="inv_image"
+      required
+      value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+    >
+
+    <label>Thumbnail Path</label>
+    <input
+      type="text"
+      name="inv_thumbnail"
+      required
+      value="<%= locals.inv_thumbnail || '/images/vehicles/no-image.png' %>"
+    >
+
+    <label>Price</label>
+    <input
+      type="number"
+      name="inv_price"
+      required
+      value="<%= locals.inv_price || '' %>"
+    >
+
+    <label>Year</label>
+    <input
+      type="number"
+      name="inv_year"
+      required
+      value="<%= locals.inv_year || '' %>"
+    >
+
+    <label>Miles</label>
+    <input
+      type="number"
+      name="inv_miles"
+      required
+      value="<%= locals.inv_miles || '' %>"
+    >
+
+    <label>Color</label>
+    <input
+      type="text"
+      name="inv_color"
+      required
+      value="<%= locals.inv_color || '' %>"
+    >
+
+    <button type="submit">Add Inventory</button>
+  </form>
+</div>

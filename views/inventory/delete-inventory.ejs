@@ -1,0 +1,16 @@
+<h1><%= title %></h1>
+
+<p class="notice">
+  This action cannot be undone. Are you sure you want to delete this item?
+</p>
+
+<ul>
+  <li><strong>Vehicle:</strong> <%= inv_make %> <%= inv_model %></li>
+  <li><strong>Year:</strong> <%= inv_year %></li>
+  <li><strong>Price:</strong> $<%= inv_price %></li>
+</ul>
+
+<form method="post" action="/inv/delete">
+  <input type="hidden" name="inv_id" value="<%= inv_id %>">
+  <button type="submit">Confirm Delete</button>
+</form>

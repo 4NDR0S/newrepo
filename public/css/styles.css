@@ -398,3 +398,37 @@ welcome hero */
   background-color: #fff3cd;
   border-left: 5px solid #ffc107;
 }
+
+
+/* Inventory Management Table */
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay thead {
+  background-color: #222;
+  color: #fff;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+#inventoryDisplay a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+}

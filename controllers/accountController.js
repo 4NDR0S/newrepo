@@ -157,16 +157,126 @@ async function accountLogin(req, res) {
 
 
 
-// JWT
+/* ****************************************
+ *  Account Management View
+ * ************************************ */
 async function buildAccountManagement(req, res) {
   let nav = await utilities.getNav()
   res.render("account/management", {
     title: "Account Management",
     nav,
+    accountData: res.locals.accountData,
     errors: null,
   })
 }
 
+
+
+/* ****************************************
+ *  Update Account View
+ * ************************************ */
+async function buildUpdateAccount(req, res) {
+  let nav = await utilities.getNav()
+  res.render("account/update", {
+    title: "Update Account",
+    nav,
+    accountData: res.locals.accountData,
+    errors: null,
+  })
+}
+
+
+/* ****************************************
+ *  Process Account Update
+ * ************************************ */
+async function updateAccountInfo(req, res) {
+  let nav = await utilities.getNav()
+
+  const {
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_id,
+  } = req.body
+
+  // ✅ Validar SOLO si otro usuario usa ese email
+  const emailExists =
+    await accountModel.checkExistingEmailForUpdate(account_email, account_id)
+
+  if (emailExists) {
+    req.flash("notice", "Email already exists. Please use a different email.")
+    return res.render("account/update", {
+      title: "Update Account",
+      nav,
+      errors: null,
+      accountData: {
+        account_firstname,
+        account_lastname,
+        account_email,
+        account_id
+      }
+    })
+  }
+
+  const updateResult = await accountModel.updateAccount(
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_id
+  )
+
+  if (updateResult) {
+    // 🔄 REGENERAR JWT CON DATOS ACTUALIZADOS
+    const tokenData = {
+      account_id: updateResult.account_id,
+      account_firstname: updateResult.account_firstname,
+      account_lastname: updateResult.account_lastname,
+      account_email: updateResult.account_email,
+      account_type: updateResult.account_type,
+    }
+
+    const accessToken = jwt.sign(
+      tokenData,
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: 3600 }
+    )
+
+    res.cookie("jwt", accessToken, {
+      httpOnly: true,
+      maxAge: 3600 * 1000,
+    })
+
+    req.flash("notice", "Account updated successfully.")
+    return res.redirect("/account/")
+  }
+}
+
+/* ****************************************
+ *  Process Password Update
+ * ************************************ */
+async function updateAccountPassword(req, res) {
+  const { account_password, account_id } = req.body
+
+  const hashedPassword = bcrypt.hashSync(account_password, 10)
+  const result = await accountModel.updatePassword(hashedPassword, account_id)
+
+  if (result) {
+    req.flash("notice", "Password updated successfully.")
+    return res.redirect("/account/")
+  }
+
+  req.flash("notice", "Password update failed.")
+  res.redirect("/account/update")
+}
+
+/* ****************************************
+ *  Logout
+ * ************************************ */
+function accountLogout(req, res) {
+  res.clearCookie("jwt")
+  req.flash("notice", "You have been logged out.")
+  res.redirect("/")
+}
 
 
 module.exports = {
@@ -174,5 +284,9 @@ module.exports = {
   buildRegister,
   registerAccount,
   accountLogin,
-  buildAccountManagement
+  buildAccountManagement,
+  buildUpdateAccount,
+  updateAccountInfo,
+  updateAccountPassword,
+  accountLogout,
 }

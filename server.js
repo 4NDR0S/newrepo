@@ -66,7 +66,18 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 //JWT (JSON WEB TOKEN)
 app.use(cookieParser())
+
+
+// Default locals for all views (PREVENT EJS CRASH)
+app.use((req, res, next) => {
+  res.locals.loggedin = false
+  res.locals.accountData = null
+  next()
+})
+
+// JWT check (may overwrite locals)
 app.use(utilities.checkJWTToken)
+
 
 /* ***********************
  * Routes

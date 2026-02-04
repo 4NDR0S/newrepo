@@ -1,0 +1,94 @@
+<% if (messages && messages.notice) { %>
+  <div class="notice">
+    <%= messages.notice %>
+  </div>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<h1><%= title %></h1>
+
+<section class="account-update-container">
+
+  <h2>Update Account Information</h2>
+
+  <%- messages() %>
+
+  <form method="post" action="/account/update" class="account-update-form">
+
+    <label for="account_firstname">First Name</label>
+    <input
+      type="text"
+      id="account_firstname"
+      name="account_firstname"
+      required
+      value="<%= locals.account_firstname || accountData?.account_firstname %>"
+    >
+
+    <label for="account_lastname">Last Name</label>
+    <input
+      type="text"
+      id="account_lastname"
+      name="account_lastname"
+      required
+      value="<%= locals.account_lastname || accountData?.account_lastname %>"
+    >
+
+    <label for="account_email">Email</label>
+    <input
+      type="email"
+      id="account_email"
+      name="account_email"
+      required
+      value="<%= locals.account_email || accountData?.account_email %>"
+    >
+
+    <input
+      type="hidden"
+      name="account_id"
+      value="<%= accountData?.account_id %>"
+    >
+
+    <button type="submit">Update Account</button>
+  </form>
+
+</section>
+
+<section class="password-update-container">
+
+  <h2>Change Password</h2>
+
+  <form method="post" action="/account/update-password" class="password-update-form">
+
+    <label for="account_password">New Password</label>
+    <input
+      type="password"
+      id="account_password"
+      name="account_password"
+      required
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+    >
+
+    <p class="password-rules">
+      Password must be at least 12 characters long, include one capital letter,
+      one number, and one special character.
+      <br>
+      Entering a password will replace your current password.
+    </p>
+
+    <input
+      type="hidden"
+      name="account_id"
+      value="<%= accountData?.account_id %>"
+    >
+
+    <button type="submit">Change Password</button>
+  </form>
+
+</section>

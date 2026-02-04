@@ -55,11 +55,82 @@ async function getAccountByEmail(account_email) {
   }
 }
 
+/* *****************************
+ * Check for existing email (exclude current account)
+ * ***************************** */
+async function checkExistingEmailForUpdate(account_email, account_id) {
+  try {
+    const sql = `
+      SELECT account_id
+      FROM account
+      WHERE account_email = $1
+      AND account_id != $2
+    `
+    const result = await pool.query(sql, [account_email, account_id])
+    return result.rowCount
+  } catch (error) {
+    return 0
+  }
+}
+
+/* *****************************
+ * Update account information
+ * ***************************** */
+async function updateAccount(
+  account_firstname,
+  account_lastname,
+  account_email,
+  account_id
+) {
+  try {
+    const sql = `
+      UPDATE account
+      SET account_firstname = $1,
+          account_lastname = $2,
+          account_email = $3
+      WHERE account_id = $4
+      RETURNING *
+    `
+    const data = await pool.query(sql, [
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_id
+    ])
+    return data.rows[0]
+  } catch (error) {
+    return null
+  }
+}
+
+/* *****************************
+ * Update account password
+ * ***************************** */
+async function updatePassword(account_password, account_id) {
+  try {
+    const sql = `
+      UPDATE account
+      SET account_password = $1
+      WHERE account_id = $2
+      RETURNING account_id`
+    const data = await pool.query(sql, [
+      account_password,
+      account_id,
+    ])
+    return data.rows[0]
+  } catch (error) {
+    console.error("updatePassword error " + error)
+    return null
+  }
+}
 
 
 module.exports = {
   registerAccount,
   checkExistingEmail,
-  getAccountByEmail
+  checkExistingEmailForUpdate,
+  getAccountByEmail,
+  updateAccount,
+  updatePassword,
 }
 

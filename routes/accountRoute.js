@@ -21,10 +21,6 @@ router.get(
 
 
 // Route to process registration
-// router.post(
-//   "/register",
-//   utilities.handleErrors(accountController.registerAccount)
-// )
 router.post(
   "/register",
   regValidate.registationRules(),
@@ -33,15 +29,6 @@ router.post(
 )
 
 // Process the login 
-// router.post(
-//   "/login",
-//   regValidate.loginRules(),
-//   regValidate.checkLoginData,
-//   (req, res) => {
-//     res.status(200).send("login process")
-//   }
-// )
-
 router.post(
   "/login",
   regValidate.loginRules(),
@@ -55,6 +42,35 @@ router.get(
   utilities.handleErrors(accountController.buildAccountManagement)
 )
 
+
+router.get(
+  "/update",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateAccount)
+)
+
+
+router.post(
+  "/update",
+  utilities.checkLogin,
+  regValidate.updateRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccountInfo)
+)
+
+router.post(
+  "/update-password",
+  utilities.checkLogin,
+  regValidate.passwordRules(),
+  regValidate.checkPasswordData,
+  utilities.handleErrors(accountController.updatePassword)
+)
+
+
+router.get(
+  "/logout",
+  utilities.handleErrors(accountController.accountLogout)
+)
 
 
 module.exports = router

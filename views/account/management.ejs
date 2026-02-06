@@ -1,10 +1,13 @@
 <section class="account-management-container">
 
-  <h1><%= title %></h1>
+  <h1>
+    <%= title %>
+  </h1>
 
   <% if (accountData) { %>
 
-    <h2>Welcome <%= accountData.account_firstname %></h2>
+    <h2>Welcome <%= accountData.account_firstname %>
+    </h2>
 
     <!-- Update account info (para TODOS) -->
     <p>
@@ -12,11 +15,11 @@
         Update Account Information
       </a>
     </p>
+    <p>
+      Edit your personal information and update your account password.
+    </p>
 
-    <% if (
-      accountData.account_type === "Employee" ||
-      accountData.account_type === "Admin"
-    ) { %>
+    <% if ( accountData.account_type==="Employee" || accountData.account_type==="Admin" ) { %>
 
       <h3>Inventory Management</h3>
 
@@ -26,9 +29,40 @@
         </a>
       </p>
 
-    <% } %>
+      <p>
+        Add new vehicle classifications and manage inventory listings.
+      </p>
+      <% } %>
 
-  <% } %>
+        <% } %>
+
+
+          <hr>
+
+          <div class="account-info">
+
+            <h3>Account Overview</h3>
+
+
+            <p>
+              <strong>Email:</strong>
+              <%= accountData.account_email %>
+            </p>
+
+            <p>
+              <strong>Account Type:</strong>
+              <%= accountData.account_type %>
+            </p>
+
+            <p>
+              <strong>Status:</strong> Active
+            </p>
+
+            <p>
+              This information helps identify your account and determine
+              the features available to you.
+            </p>
+
+          </div>
 
 </section>
-

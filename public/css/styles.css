@@ -24,11 +24,16 @@ body {
 #top-header {
   display: flex;
   justify-content: space-between;
+  padding: .4rem .8rem;
 }
 
 .siteName {
   font-size: x-large;
   font-weight: 600;
+}
+
+.tools-space {
+  padding: 0 .5rem;
 }
 
 /******* navigation ***************/
@@ -58,6 +63,14 @@ nav ul li a {
 
 a {
   text-decoration: none;
+}
+
+/******* footer ***************/
+footer {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 1rem;
 }
 
 /* ===============================

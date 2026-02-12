@@ -555,3 +555,45 @@ welcome hero */
 .account-management-container p {
   margin-bottom: 1rem;
 }
+
+
+/* favorite button */
+.favorites-form {
+  text-align: center;
+  margin-top: 0;
+}
+.favorites-btn {
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* favorite list view */
+
+.favorite-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 400px;
+  margin: .4rem 0;
+  border-bottom: solid 1px #222;
+}
+
+.favorite-list strong{
+  padding: .5rem 1rem;
+  width: 250px;
+}
+
+/* remove fav view */
+.remove-fav-form {
+  text-decoration: none;
+  padding: .5rem 1rem;
+  margin-left: 0;
+}
+
+.remove-fav-form button {
+  padding: .2rem .4rem;
+  cursor: pointer;
+}

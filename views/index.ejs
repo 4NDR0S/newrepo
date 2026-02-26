@@ -1,61 +1,70 @@
-<h1>Welcome to CSE Motors!</h1>
-
 <%- messages() %>
 
-<div class="welcome-hero">
-    <div class="welcome-msg">
-        <h2>DMC Dolorean</h2>
-        <p>3 cup holders</p>
-        <p>Superman doors</p>
-        <p>Fuzzy dicel</p>
-        <button>Own Today</button>
+<!-- HERO -->
+<section class="hero-cinematic">
+
+  <div class="hero-gradient"></div>
+
+  <div class="hero-content-modern">
+    <span class="hero-tag">CSE Motors</span>
+
+    <h1 class="hero-title">
+      Drive the Future.
+    </h1>
+
+    <p class="hero-description">
+      Premium vehicle management system built with Express & EJS.
+      Secure role-based inventory control for admins and employees.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="/inv" class="btn-main">Explore Inventory</a>
+      <a href="/account/login" class="btn-ghost">Admin Access</a>
     </div>
-    <img src="/images/vehicles/delorean.jpg" alt="">
-</div>
+  </div>
 
-<div class="review-upgrades-wrapper">
-    <div class="review-box">
-        <h2>DMC Delorean Reviews</h2>
-        <ul>
-            <li>"So fast it's almost like traveling in time." (4/5)</li>
-            <li>"Coolest ride on the road." (4/5)</li>
-            <li>"I'm feeling McFly!" (5/5)</li>
-            <li>"The most fururistic ride of our day." (4.5/5)</li>
-            <li>"80's livin and I love it!" (5/5)</li></ul>
-    </div>
+</section>
 
-    <div class="upgrades-box">
-        <h2>Delorean Upgrades</h2>
-        <div class="upgrades-card">
-            <div class="card-upgrades">
-                <div class="card-img">
-                <img src="/images/upgrades/flux-cap.png" alt="">
-                </div>
-                <a href=""><p>Flux Capacitor</p></a>
-            </div>
+<!-- FEATURES SECTION -->
+<section class="modern-section">
+  <div class="section-header">
+    <h2>System Capabilities</h2>
+    <p>Built for scalability, security, and real dealership workflows.</p>
+  </div>
 
-            <div class="card-upgrades">
-                <div class="card-img">
-                <img src="/images/upgrades/flame.jpg" alt="">
-                </div>
-                <a href=""><p>Flame Decals</p></a>
-            </div>
-        </div>
-        <div class="upgrades-card">
-            <div class="card-upgrades">
-                <div class="card-img">
-                <img src="/images/upgrades/bumper_sticker.jpg" alt="">
-                </div>
-                <a href=""><p>Bumper Stickers</p></a>
-            </div>
-
-            <div class="card-upgrades">
-                <div class="card-img">
-                <img src="/images/upgrades/hub-cap.jpg" alt="">
-                </div>
-                <a href=""><p>Hub Caps</p></a>
-            </div>
-        </div>
+  <div class="modern-grid">
+    
+    <div class="modern-card">
+      <span class="material-symbols-rounded modern-icon">
+        lock
+      </span>
+      <h3>Role-Based Access</h3>
+      <p>Admin and employee permissions to manage inventory securely.</p>
     </div>
 
-</div>
+    <div class="modern-card">
+      <span class="material-symbols-rounded modern-icon">
+        directions_car
+      </span>
+      <h3>Inventory Management</h3>
+      <p>Add, edit, and control vehicle listings dynamically.</p>
+    </div>
+
+    <div class="modern-card">
+      <span class="material-symbols-rounded modern-icon">
+        bolt
+      </span>
+      <h3>Fast & Lightweight</h3>
+      <p>Optimized Express architecture with server-side rendering.</p>
+    </div>
+
+    <div class="modern-card">
+      <span class="material-symbols-rounded modern-icon">
+        analytics
+      </span>
+      <h3>Structured Data</h3>
+      <p>Organized vehicle categories and dynamic content rendering.</p>
+    </div>
+
+  </div>
+</section>

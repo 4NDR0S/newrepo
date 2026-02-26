@@ -5,72 +5,215 @@
   box-sizing: border-box;
 }
 
+/* =========================================
+   GLOBAL MODERN FOUNDATION
+========================================= */
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0b1120;
+  color: #e2e8f0;
 }
 
+/* ========================================
+   GLOBAL BACKGROUND GRADIENT
+======================================== */
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(56,189,248,0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(14,165,233,0.12),
+      transparent 40%
+    ),
+    #0b1120;
+  color: #ffffff;
+}
+
+/* wrapper ahora es layout container limpio */
 
 #wrapper {
-  margin: 0 2rem;
-  padding: 1rem;
-  background-color: white;
-  border: solid;
-  border-radius: 1rem;
-  border-color: #0b5ed7;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+/* main spacing */
+
+main {
+  min-height: 70vh;
+}
+
+/* Smooth rendering */
+
+html {
+  scroll-behavior: smooth;
 }
 
 /******* Header ***************/
-#top-header {
+/* =========================================
+   FULL WIDTH MODERN HEADER
+========================================= */
+
+.modern-header {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 1rem 2rem;
+}
+
+/* ahora ocupa TODO el ancho */
+
+.header-inner {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: .4rem .8rem;
+  justify-content: space-between; /* extremos */
+  align-items: center;
 }
 
-.siteName {
-  font-size: x-large;
-  font-weight: 600;
+/* BRAND */
+
+.brand a {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
 }
 
-.tools-space {
-  padding: 0 .5rem;
+.brand a:hover {
+  opacity: 0.8;
+}
+
+/* ACCOUNT */
+
+.account-area {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.account-area a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  transition: 0.2s ease;
+}
+
+.account-area a:hover {
+  color: #ffffff;
+}
+
+.account-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+}
+
+.account-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Logout subtle */
+
+.logout-link {
+  opacity: 0.7;
+}
+
+.logout-link:hover {
+  opacity: 1;
 }
 
 /******* navigation ***************/
+/* =========================================
+   MODERN NAVBAR
+========================================= */
+
 nav {
-  background-color: black;
-  color: aliceblue;
-  padding: 0.1rem 3rem;
+  background-color: #05070d;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0.8rem 3rem;
 }
 
 nav ul {
-  color: white;
-  list-style-type: none;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  padding: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav_list {
   display: flex;
   justify-content: space-between;
-  padding: .5rem 1rem;
-  list-style-type: none;
+  align-items: center;
+  gap: 2rem;
 }
 
-a {
+nav ul li a {
+  color: #cbd5e1;
   text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
 
-/******* footer ***************/
-footer {
-  text-align: center;
-  background-color: black;
-  color: white;
-  padding: 1rem;
+nav ul li a:hover {
+  color: #ffffff;
+}
+
+/* =========================================
+   MODERN FOOTER
+========================================= */
+
+.modern-footer {
+  background-color: #05070d;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.footer-brand p {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  opacity: 0.55;
+}
+
+.footer-meta p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.4;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /* ===============================
@@ -116,53 +259,83 @@ footer {
   margin: 1.5rem 0;
 }
 
-/* ===============================
-   INVENTORY VIEW (mobile default)
-================================= */
+/* ========================================
+   INVENTORY GRID - MODERN STYLE
+======================================== */
 
 #inv-display {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 0;
-  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
+  justify-content: center;   /* 🔥 centra cuando hay pocos */
+  gap: 2rem;
+  padding: 2rem;
+  list-style: none;
 }
+
+/* CARD */
 
 #inv-display li {
-  list-style-type: none;
-  width: 300px;
-  margin: 1rem;
-  text-align: center;
-  border: solid 1.5px #5c5c5c;
-  border-radius: 1rem;
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  padding: 1rem;
 }
 
-#inv-display img {
+#inv-display li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* IMAGE */
+
+/* Contenedor visual de imagen */
+#inv-display li img {
   width: 100%;
-  max-height: 180px;
-  min-height: 150px;
-  border-radius: 1rem;
+  height: 180px;              /* tamaño fijo elegante */
+  object-fit: cover;
+  border-radius: 12px;        /* bordes internos */
+  background-color: #1e293b;  /* fondo si imagen no llena */
 }
 
-#inv-display hr {
-  margin: 0;
-  padding: 0;
-}
+/* CARD CONTENT */
 
 .namePrice {
-  padding-bottom: 1rem;
+  padding: 1.2rem;
+  text-align: left;
 }
 
-
-/* ===============================
-   VEHICLE DETAIL (mobile default)
-================================= */
-.vehicle-image {
-  text-align: center;
+.namePrice h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
-.vehicle-image img {
-  width: 260px;
-  min-width: 200px;
+.namePrice a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.namePrice a:hover {
+  opacity: 0.8;
+}
+
+.namePrice span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 2rem;
+  padding-bottom: 0;
+  color: #ffffff;
 }
 
 /* ===============================
@@ -171,7 +344,6 @@ footer {
 
 @media screen and (min-width: 768px) {
   body {
-    background-image: url("../images/site/small_check.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -210,16 +382,99 @@ footer {
 
   /* VEHICLE DETAIL (desktop view) */
 
-  .vehicle-detail {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem 0;
-    gap: 3rem;
-  }
+  /* ========================================
+   VEHICLE DETAIL - PREMIUM MODERN STYLE
+======================================== */
 
-  .vehicle-image img {
-    width: 300px;
+.vehicle-detail {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  display: grid;
+  gap: 3rem;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .vehicle-detail {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
   }
+}
+
+/* IMAGE */
+
+.vehicle-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  background-color: #1e293b;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+/* INFO */
+
+.vehicle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.vehicle-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* PRICE */
+
+.vehicle-info .price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56,189,248,0.08);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* META INFO */
+
+.vehicle-info p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.vehicle-info strong {
+  color: #ffffff;
+}
+
+/* FAVORITES BUTTON */
+
+.favorites-form {
+  max-width: 1100px;
+  margin: 0 auto 4rem auto;
+  padding: 0 2rem;
+}
+
+.favorites-btn {
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #0b1120;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.favorites-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(14,165,233,0.4);
+}
 }
 
 
@@ -284,278 +539,718 @@ welcome hero */
 
 
 
-/* ===============================
-   Login page CSS
-================================= */
+/* ========================================
+   LOGIN - MODERN GLASS STYLE
+======================================== */
 
 .login-container {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #b4c3dac8;
-  border-radius: 6px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeIn 0.6s ease;
 }
+
+.login-container h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* CARD */
 
 .login-form {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(15,23,42,0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
+
+/* LABELS */
 
 .login-form label {
-  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
 }
+
+/* INPUTS */
 
 .login-form input {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
 }
+
+.login-form input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+}
+
+/* BUTTON */
 
 .login-form button {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: none;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #0b1120;
+  transition: 0.3s ease;
 }
+
+.login-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+/* REGISTER LINK */
+
+.register-link {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.register-link a {
+  color: #38bdf8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  color: #0ea5e9;
+}
+
+/* NOTICE / ERRORS */
 
 .notice {
-  background-color: #ffe6e6;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 4px;
+  max-width: 420px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #f87171;
+  list-style: none;
+}
+
+/* FADE IN */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
-/* ===============================
-   Registration page CSS
-================================= */
+/* ========================================
+   REGISTER - MODERN GLASS STYLE
+======================================== */
+
 .register-container {
-  max-width: 450px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #b4c3dac8;
-  border-radius: 6px;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeIn 0.6s ease;
 }
+
+.register-container h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* CARD */
 
 .register-form {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(15,23,42,0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
+  gap: 1.1rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
+
+/* LABELS */
 
 .register-form label {
-  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
 }
+
+/* INPUTS */
 
 .register-form input {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
 }
+
+.register-form input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+}
+
+/* PASSWORD RULES */
 
 .password-rules {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  background: rgba(56,189,248,0.05);
+  padding: 0.8rem;
+  border-radius: 10px;
+  line-height: 1.5;
 }
+
+/* BUTTON */
 
 .register-form button {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.95rem;
+  border-radius: 10px;
+  border: none;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #0b1120;
+  transition: 0.3s ease;
+}
+
+.register-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+/* NOTICE / ERRORS */
+
+.notice {
+  max-width: 480px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #f87171;
+  list-style: none;
+}
+
+/* FADE IN */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
-/* ===============================
-   Inventory forms CSS
-================================= */
+/* ========================================
+   INVENTORY FORM - MODERN ADMIN STYLE
+======================================== */
 
 .inventory-container {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #b4c3dac8;
-  border-radius: 6px;
-}
-
-.inventory-form {
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
 }
 
-.inventory-form label {
-  margin-top: 1rem;
-  font-weight: 600;
+/* CARD */
+
+.inventory-form {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  background: rgba(15,23,42,0.65);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
+
+/* LABELS */
+
+.inventory-form label {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* INPUTS / SELECT / TEXTAREA */
 
 .inventory-form input,
 .inventory-form select,
 .inventory-form textarea {
-  padding: 0.5rem;
-  font-size: 1rem;
-  margin-top: 0.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
 }
+
+.inventory-form input:focus,
+.inventory-form select:focus,
+.inventory-form textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+  background: rgba(255,255,255,0.06);
+}
+
+/* TEXTAREA */
 
 .inventory-form textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px;
 }
+
+/* BUTTON */
 
 .inventory-form button {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #0b1120;
+  transition: 0.3s ease;
 }
+
+.inventory-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+
+
+/* ========================================
+   NOTICE (SYSTEM STYLE)
+======================================== */
 
 .notice {
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  background-color: #fff3cd;
-  border-left: 5px solid #ffc107;
+  max-width: 650px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(250,204,21,0.08);
+  border: 1px solid rgba(250,204,21,0.4);
+  color: #facc15;
+  list-style: none;
 }
 
+/* ========================================
+   INVENTORY MANAGEMENT PAGE
+======================================== */
 
-/* Inventory Management Table */
-#inventoryDisplay {
+
+.inventory-management-container {
+  max-width: 1100px;
+  margin: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ACTION LINKS */
+
+.inv-management-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.inv-management-links li {
+  list-style: none;
+  color: white;
+}
+
+.inv-management-links a {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(56,189,248,0.08);
+  border: 1px solid rgba(56,189,248,0.3);
+  color: #38bdf8;
+  transition: 0.3s ease;
+}
+
+.inv-management-links a:hover {
+  background: #38bdf8;
+  color: #0b1120;
+  transform: translateY(-2px);
+}
+
+/* SECTION TITLE */
+
+.inventory-management-container h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+}
+
+/* ===============================
+   Back to Inventory Management
+================================= */
+
+.back-to-inv-managment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  text-decoration: none;
+  background-color: #222;
+  color: #fff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.back-to-inv-managment:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   MODERN SELECT DROPDOWN
+======================================== */
+
+#classificationList {
   width: 100%;
-  border-collapse: collapse;
+  max-width: 400px;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.95rem;
+  appearance: none;
+  cursor: pointer;
+  transition: 0.2s ease;
   margin-top: 1rem;
 }
 
+/* Focus */
+
+#classificationList:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+}
+
+/* Custom arrow */
+
+#classificationList {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2338bdf8' viewBox='0 0 20 20'%3E%3Cpath d='M5 7l5 5 5-5H5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+/* ========================================
+   INVENTORY TABLE - MODERN DASHBOARD
+======================================== */
+
+#inventoryDisplay {
+  width: 100%;
+  margin-top: 2rem;
+  border-collapse: collapse;
+  background: rgba(15,23,42,0.65);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+
 #inventoryDisplay thead {
-  background-color: #222;
-  color: #fff;
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
 }
 
-#inventoryDisplay th,
-#inventoryDisplay td {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
+#inventoryDisplay th {
+  padding: 1rem;
+  font-weight: 600;
   text-align: left;
+  font-size: 0.9rem;
 }
 
-#inventoryDisplay tr:nth-child(even) {
-  background-color: #f4f4f4;
+/* ROWS */
+
+#inventoryDisplay td {
+  padding: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: #cbd5e1;
+  font-size: 0.9rem;
 }
+
+#inventoryDisplay tr:hover {
+  background: rgba(56,189,248,0.05);
+}
+
+/* LINKS (Edit / Delete) */
 
 #inventoryDisplay a {
-  color: #0056b3;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  color: #38bdf8;
+  transition: 0.2s ease;
 }
 
 #inventoryDisplay a:hover {
-  text-decoration: underline;
+  color: #0ea5e9;
+}
+
+/* FADE IN */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
-/* ===============================
-   Account Update page CSS
-================================= */
+/* ========================================
+   ACCOUNT UPDATE - GLASS CONSISTENT
+======================================== */
 
-/* Contenedor general de actualización */
 .account-update-container,
 .password-update-container {
-  max-width: 450px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #b4c3dac8;
-  border-radius: 6px;
-}
-
-/* Títulos */
-.account-update-container h2,
-.password-update-container h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-/* Formularios */
-.account-update-form,
-.password-update-form {
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
 }
 
-/* Labels */
+.account-update-form,
+.password-update-form {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: rgba(15,23,42,0.65);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* labels */
+
 .account-update-form label,
 .password-update-form label {
-  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #cbd5e1;
 }
 
-/* Inputs */
+/* inputs */
+
 .account-update-form input,
 .password-update-form input {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: 0.2s ease;
 }
 
-/* Reglas de password */
-.password-update-container .password-rules {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+.account-update-form input:focus,
+.password-update-form input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
 }
 
-/* Botones */
+/* buttons */
+
 .account-update-form button,
 .password-update-form button {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.95rem;
+  border-radius: 10px;
+  border: none;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #0b1120;
+  transition: 0.3s ease;
 }
 
-/* Separación visual entre secciones */
-.password-update-container {
-  margin-top: 1.5rem;
+.account-update-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
 }
 
-
-/* ===============================
-   Account Management page CSS
-================================= */
+/* ========================================
+   ACCOUNT MANAGEMENT - MODERN DASHBOARD
+======================================== */
 
 .account-management-container {
-  max-width: 450px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #b4c3dac8;
-  border-radius: 6px;
-  text-align: center;
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
+/* TITLES */
+
 .account-management-container h1 {
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .account-management-container h2 {
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  color: #38bdf8;
 }
 
 .account-management-container h3 {
-  margin-top: 2rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
-/* Links */
+/* SECTION CARDS */
+
+.account-management-container > p,
+.account-management-container > h3,
+.account-management-container > h2 {
+  margin: 0;
+}
+
+/* Action Links */
+
 .account-management-container a {
-  display: inline-block;
-  padding: 0.75rem 1rem;
-  background-color: #fff;
-  border-radius: 4px;
   text-decoration: none;
-  color: #000;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  color: #38bdf8;
+  transition: 0.2s ease;
 }
 
 .account-management-container a:hover {
-  background-color: #e0e0e0;
+  color: #0ea5e9;
 }
 
-/* Paragraph spacing */
-.account-management-container p {
-  margin-bottom: 1rem;
+/* Make primary links look like buttons */
+
+.account-management-container a[href="/account/update"],
+.account-management-container a[href="/inv/"] {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.3);
 }
 
+.account-management-container a[href="/account/update"]:hover,
+.account-management-container a[href="/inv/"]:hover {
+  background: #38bdf8;
+  color: #0b1120;
+}
+
+/* Divider */
+
+.account-management-container hr {
+  border: none;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ACCOUNT OVERVIEW CARD */
+
+.account-info {
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.account-info p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.account-info strong {
+  color: #ffffff;
+}
 
 /* favorite button */
 .favorites-form {
@@ -596,4 +1291,206 @@ welcome hero */
 .remove-fav-form button {
   padding: .2rem .4rem;
   cursor: pointer;
+}
+
+
+
+/* =========================================
+   ULTRA MODERN HERO
+========================================= */
+
+/* ========================================
+   CINEMATIC HERO WITH IMAGE + GRADIENT
+======================================== */
+
+.hero-cinematic {
+  position: relative;
+  height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-image: url("/images/site/hero-img.png");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+/* GRADIENT LAYER */
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 15, 25, 0.95) 0%,
+    rgba(10, 15, 25, 0.85) 35%,
+    rgba(10, 15, 25, 0.6) 55%,
+    rgba(10, 15, 25, 0.2) 75%,
+    rgba(10, 15, 25, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+/* CONTENT */
+
+.hero-content-modern {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding-left: 5rem;
+  color: white;
+}
+
+.hero-tag {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 1rem 0;
+  line-height: 1.05;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* BUTTONS */
+
+.btn-main {
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-main:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+.btn-ghost {
+  padding: 0.9rem 1.8rem;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-ghost:hover {
+  background-color: white;
+  color: black;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .hero-content-modern {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* =========================================
+   MODERN SECTION
+========================================= */
+
+.modern-section {
+  padding: 5rem 3rem;
+  background-color: #0f172a;
+  color: white;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  opacity: 0.7;
+}
+
+.modern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* ===============================
+   MODERN FEATURE CARDS IMPROVED
+================================= */
+
+.modern-card {
+  background-color: #1e293b;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modern-card:hover {
+  transform: translateY(-6px);
+  background-color: #334155;
+}
+
+/* ICON */
+
+.modern-icon {
+  font-size: 64px;   /* MÁS GRANDE */
+  color: #3b82f6;
+  background: rgba(59,130,246,0.1);
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modern-card:hover .modern-icon {
+  background: rgba(59,130,246,0.2);
+  transform: scale(1.08);
+}
+
+/* TEXT */
+
+.modern-card h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.modern-card p {
+  opacity: 0.75;
+  font-size: 0.95rem;
+  max-width: 240px;
 }

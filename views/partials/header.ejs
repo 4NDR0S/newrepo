@@ -1,25 +1,29 @@
-<header id="top-header">
-  <span class="siteName">
-    <a href="/" title="Return to home page">CSE Motors</a>
-  </span>
+<header class="modern-header">
+  <div class="header-inner">
 
-  <div id="tools">
-    <% if (loggedin && accountData) { %>
+    <div class="brand">
+      <a href="/" title="Return to home page">CSE Motors</a>
+    </div>
 
-      <a href="/account/" title="Account Management">
-        Welcome <%= accountData.account_firstname %>
-      </a>
-      <span class="tools-space">|</span>
-      <a href="/account/logout" title="Logout">
-        Logout
-      </a>
+    <div class="account-area">
+      <% if (loggedin && accountData) { %>
 
-    <% } else { %>
+        <a href="/account/" class="welcome-link">
+          Welcome <%= accountData.account_firstname %>
+        </a>
 
-      <a href="/account/login" title="Click to log in">
-        My Account
-      </a>
+        <a href="/account/logout" class="logout-link">
+          Logout
+        </a>
 
-    <% } %>
+      <% } else { %>
+
+        <a href="/account/login" class="account-btn">
+          My Account
+        </a>
+
+      <% } %>
+    </div>
+
   </div>
 </header>
